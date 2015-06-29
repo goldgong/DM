@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+ext {
+  javaVersion='1.6'
+}
+
+buildDir = 'build'
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.12.RELEASE")
+    compile('org.apache.tomcat.embed:tomcat-embed-jasper:8.0.14')
+}
+
+task initSrc << {
+    project.sourceSets*.allSource.srcDirTrees.flatten().dir.each { dir ->
+        dir.mkdirs()
+    }
+}
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+ 
+
+/* Eclipse 관련 설정들 */
+tasks.eclipse.dependsOn cleanEclipse
+tasks.eclipse.dependsOn initSrc
+
+eclipse {
+  classpath {
+    downloadSources = true
+    defaultOutputDir = file("${buildDir}/classes/main")
+  }
+}
+ 
