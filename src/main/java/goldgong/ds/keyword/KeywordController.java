@@ -2,17 +2,19 @@ package goldgong.ds.keyword;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/ds/keyword")
 public class KeywordController {
 	Logger log = Logger.getLogger(getClass());
 	
-    @RequestMapping("write.do")
-    String home() {
-    	log.info("write.do do it!!");
+    @RequestMapping("/ds/keyword/write")
+    public String hello() {
+    	log.info("keyword.hello");
+    	
         return "keyword/write";
     }
 
