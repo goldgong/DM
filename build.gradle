@@ -13,6 +13,11 @@ repositories { mavenCentral() }
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:1.1.12.RELEASE")
     compile('org.apache.tomcat.embed:tomcat-embed-jasper:8.0.14')
+    compile('commons-dbcp:commons-dbcp:1.4')
+    compile('org.springframework:spring-jdbc:4.0.9.RELEASE')
+    compile('org.mybatis:mybatis-spring:1.2.2')
+    compile('org.mybatis:mybatis:3.2.8')
+    compile('com.oracle:ojdbc14:10.2.0.3.0')
 }
 
 task initSrc << {

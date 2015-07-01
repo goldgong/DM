@@ -1,4 +1,4 @@
-package goldgong.ds;
+package dm;
 
 import java.nio.charset.Charset;
 
@@ -9,9 +9,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -61,6 +63,16 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return characterEncodingFilter;
     }
 	
+    @Bean 
+    public MessageSource messageSource() { 
+	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource(); 
+	    messageSource.setBasenames("classpath:messages/messages", "classpath:messages/validation"); 
+	    messageSource.setUseCodeAsDefaultMessage(true); 
+	    messageSource.setDefaultEncoding("UTF-8"); 
+	    messageSource.setCacheSeconds(0); // # -1 : never reload, 0 always reload 
+	    return messageSource; 
+    }
+    
 	public static void main(String[] args) throws Exception {
         SpringApplication.run(WebMvcConfig.class, args);
     }

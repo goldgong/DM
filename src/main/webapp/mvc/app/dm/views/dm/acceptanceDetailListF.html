@@ -1,0 +1,30 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+#title td
+{
+	border:1px solid #ccc;
+	background-color:#eee	
+}
+#content td
+{
+	border:1px solid #ccc;	
+}
+</style>
+
+<table align="center" style="width:80%;margin-top:50px;">|
+	<tr id="title">
+		<td>승인일</td>
+		<td>거래금액</td>
+		<td>부분납입금</td>
+		<td>잔액</td>
+		<td>누적수납액</td>
+	</tr>
+	<tr id="content" data-ng-repeat="item in vm.datas | orderBy:'amount'" style="text-align:center;">
+		<td>{{item.refDate}}</td>
+		<td>{{item.amount | number}}</td>
+		<td>{{item.recAmount | number}}</td>
+		<td>{{item.differenceAmountByFdk | number}}</td>
+		<td>{{item.accureAmount | number}}</td>
+	</tr>
+</table>
+

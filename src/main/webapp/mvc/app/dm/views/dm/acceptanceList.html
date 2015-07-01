@@ -1,0 +1,27 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+#title td
+{
+	border:1px solid #ccc;
+	background-color:#eee	
+}
+#content td
+{
+	border:1px solid #ccc;	
+}
+</style>
+
+<table align="center" style="width:80%;margin-top:50px;">
+	<tr id="title">
+		<td>입금일</td>
+		<td>유형</td>
+		<td>제휴사</td>
+		<td>입금구분</td>
+	</tr>
+	<tr id="content" data-ng-repeat="item in vm.datas" style="text-align:center;">
+		<td>{{item.memberUid}}</td>
+		<td>{{item.nickName}}</td>
+		<td>{{item.passwd}}</td>
+		<td>{{item.email}}</td>
+	</tr>
+</table>
